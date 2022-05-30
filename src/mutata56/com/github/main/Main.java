@@ -19,4 +19,19 @@ public class Main {
             exception.printStackTrace();
         }
     }
+    private static void findWords(String[] args,String word) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PATH.toFile(),true))) {
+            for(String str : args) {
+                int index = -1;
+                int count = 0;
+                while((index = word.indexOf(word,index)) >= 0) {
+                    count++;
+                }
+                writer.write(count);
+                writer.write("\n");
+            }
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
 }
