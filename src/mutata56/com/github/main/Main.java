@@ -2,11 +2,16 @@ package mutata56.com.github.main;
 
 import java.io.*;
 import java.nio.file.Path;
+import java.util.Arrays;
 
 public class Main {
     private static Path PATH = Path.of("IO\\Output.txt");
     public static void main(String[] args) {
-        someMethod(args);
+        switch (args[0]) {
+            case "-c" -> someMethod(Arrays.copyOfRange(args, 1, args.length));
+            case "-f" -> findWords(Arrays.copyOfRange(args, 2, args.length), args[1]);
+            default -> throw new IllegalArgumentException("Couldn't resolve mode.");
+        }
     }
 
     private static void someMethod(String[] args) {
